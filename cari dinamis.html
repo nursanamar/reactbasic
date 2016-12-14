@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC -//W3C//DTD XHTML 1.0 Strict//EN http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd>
+ <html lang="en">
+ <head>
+	 <title></title>
+	 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	 <link rel="stylesheet" href="" type="text/css"/>
+ </head>
+	 <body>
+	 	<div  id="tempat"></div>
+		<script src="build/react.min.js"></script>
+		<script src= "build/react-dom.min.js"></script>
+		<script src= " build/browser.min.js "></script>
+		<script type="text/babel">
+		 class Cari extends React.Component {
+		 	constructor(props) {
+		 		super(props);
+		 		this.ubah=this.ubah.bind(this);
+		 	}
+		 	ubah(e) {
+		 		this.props.berubah(e.target.value);
+		 	}
+        render() {
+          return <input type="text" placeholder="cari" value={this.props.filter} onChange={this.ubah} />;
+        }
+      }
+      class listData extends React.Component {
+      	render() {
+      		return <h1>list</h1>;
+      	}
+      }
+      class Hel extends React.Component {
+      	constructor(props) {
+      		super(props);
+      		this.state = {
+      			filter:''
+      		};
+      		this.handle=this.handle.bind(this);
+      	}
+      	handle(filter) {
+      		this.setState({filter:filter});
+      	}
+        render() {
+        	var list = [];
+        	this.props.data.forEach((data) => {
+        		if (data.nama.indexOf(this.state.filter)=== -1){
+        			return;
+        		}
+        		list.push(<List nama={data.nama} kelas={data.kelas} />);
+        	});
+          return (<div><h1>cari dinamis </h1><Cari filter={this.state.filter} berubah={this.handle} /><div>{list}</div></div>);
+        }
+      }
+      class List extends React.Component {
+      	render() {
+      		return <li>Nama : {this.props.nama} kelas : {this.props.kelas}</li>;
+      	}
+      }
+      var data = [{"nama":"nsma","kelas":"ndat "},{"nama":"nursan","kelas":"XII TKJ 2"},{"nama":"ina","kelas":"XII TKJ 2 "},{"nama":"rahmat","kelas":"XII TKJ 1"}] ;
+      
+			ReactDOM.render(
+				<Hel data={data} />,
+				document.getElementById('tempat')
+			);
+		</script>
+	 </body>
+ </html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC -//W3C//DTD XHTML 1.0 Strict//EN http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd>
+ <html lang="en">
+ <head>
+	 <title></title>
+	 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	 <link rel="stylesheet" href="" type="text/css"/>
+ </head>
+	 <body>
+	 	<div  id="tempat"></div>
+		<script src="build/react.min.js"></script>
+		<script src= "build/react-dom.min.js"></script>
+		<script src= " build/browser.min.js "></script>
+		<script type="text/babel">
+    //component dengan class
+      class Helo extends React.Component {
+        render() {
+          return <h1>Hello </h1>;
+        }
+      }
+			ReactDOM.render(
+				<Helo/>,
+				document.getElementById('tempat')
+			);
+		</script>
+	 </body>
+ </html>

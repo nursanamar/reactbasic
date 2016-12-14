@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC -//W3C//DTD XHTML 1.0 Strict//EN http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd>
+ <html lang="en">
+ <head>
+	 <title></title>
+	 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	 <link rel="stylesheet" href="" type="text/css"/>
+ </head>
+	 <body>
+		<div  id="target"></div>
+		<script src="build/react.min.js"></script>
+		<script src= "build/react-dom.min.js"></script>
+		<script src="build/browser.min.js"></script>
+		<script type="text/babel">
+class listData extends React.component{
+	render(){
+		return ( 
+			<li>{this.props.data}</li>
+		 );
+	}
+}
+class daftarList extends React.component{
+	render(){
+		var row = [];
+		this.props.data.forEach((data) => {
+			row.push(<listData data={data} /> );
+		});
+		return ( 
+			<ul>
+				{row}
+			</ul>
+		 );
+	}
+}
+class fieldCari extends React.component{
+	render(){
+		return (
+		<input type = "text"/>
+		);
+	}
+}
+class cariData extends React.component{
+	render(){
+		return ( 
+			<fieldCari />
+			<daftarList data={this.props.data}/>
+		 );
+	}
+}
+var data = ['apa','dimana','siapa','bagaimana','kapan'];
+ReactDOM.render( 
+	<h1>work</h1>,
+	document.getElementById('target')
+ );
+		</script>
+	 </body>
+ </html>
